@@ -19,6 +19,7 @@
                 @endif
             </div>
         </div>
+
     @else
 <div class="jumbotron jumbotron-extend">
     <div class="container-fluid jumbotron-container text-white">

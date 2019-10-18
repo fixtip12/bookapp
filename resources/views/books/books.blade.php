@@ -2,7 +2,9 @@
 <div class="card-deck text-center">
   <div class="card">
     <div class="card-header">
-      <img src="{{ $book->image_path }}">
+    @if ($book->image_path)
+      <img src="{{ $book->image_path }}" style="width: 200px;height: 200px">
+    @endif
     </div>
     <div class="card-body">
       <div class="card-title">

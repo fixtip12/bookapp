@@ -33,31 +33,28 @@ class BooksController extends Controller
             'book' => $book,
         ]);
     }
-
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required|max:10',
-            'impression' => 'required|max:191',
-            'image_path' => 'required|file|mimes:jpg,jpeg,png,gif'
-        ]);
+    $this->validate($request, [
+        'title' => 'required|max:10',
+        'impression' => 'required|max:191',
+        'image_path' => 'required|file|mimes:jpg,jpeg,png,gif'
+    ]);
 
-        $book = new Book;
+    $book = new Book;
+    $book->title = $request->title;
+    $book->impression = $request->impression;
+    $book->user_id = auth()->id();
 
-        //s3アップロード開始
-        $image = $request->file('image_path');
-        // バケットの`myprefix`フォルダへアップロード
-        $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
-        // アップロードした画像のフルパスを取得
-        $book->image_path = Storage::disk('s3')->url($path);
+    //s3アップロード開始
+    $image = $request->file('image_path');
+    // バケットの`myprefix`フォルダへアップロード
+    $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
+    // アップロードした画像のフルパスを取得
+    $book->image_path = Storage::disk('s3')->url($path);
+    $book->save();
 
-        $request->user()->books()->create([
-            'title' => $request->title,
-            'impression' => $request->impression,
-            'image_path' => $request->image_path,
-        ]);
-
-        return redirect('/');
+    return redirect('/');
     }
 
     public function edit($id)
