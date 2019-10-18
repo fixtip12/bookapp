@@ -23,7 +23,9 @@
         @endif
         @if (count($books) > 0)
         @include('books.books', ['books' => $books])
+        {{ $books->links('pagination::bootstrap-4') }}
         @endif
     </div>
+
 </div>
 @endsection

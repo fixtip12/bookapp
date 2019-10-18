@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>id = {{ $book->id }} の写真詳細ページ</h1>
+    <h1>登録ID:{{ $book->id }} の書籍詳細ページ</h1>
 
     <div class="card my-3" style="width: 18rem">
     <img src="{{ $book->image_path}}" class="card-img-top">

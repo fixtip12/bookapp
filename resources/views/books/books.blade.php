@@ -12,7 +12,9 @@
         <p>感想:{{ $book->impression }}</p>
       </div>
       <div class="card-text">
+      @if (Auth::id() == $book->user_id)
         <p> {!! link_to_route('books.show', '詳細を見る', ['id' => $book->id], ['class' => 'btn btn-primary']) !!}</p>
+      @endif
       </div>
     </div>
   </div>

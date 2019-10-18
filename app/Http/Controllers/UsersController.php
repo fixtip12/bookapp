@@ -21,7 +21,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $books = $user->books()->orderBy('created_at', 'desc')->paginate(10);
+        $books = $user->books()->orderBy('created_at', 'desc')->paginate(2);
 
         $data = [
             'user' => $user,
