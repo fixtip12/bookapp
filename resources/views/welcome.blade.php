@@ -2,27 +2,7 @@
 
 @section('content')
     @if (Auth::check())
-        <div class="row">
-            <aside class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">{{ Auth::user()->name }}</h3>
-                    </div>
-                    <div class="card-body">
-                        <img class="rounded img-fluid" src="{{ Gravatar::src(Auth::user()->email, 500) }}" alt="">
-                    </div>
-
-                </div>
-                {!! link_to_route('books.create', '新規メッセージの投稿', [], ['class' => 'btn btn-primary']) !!}
-                
-            </aside>
-            <div class="col-sm-8">
-                @if (count($books) > 0)
-                    @include('books.books', ['books' => $books])
-                @endif
-                {!! link_to_route('books.create', '新規メッセージの投稿', [], ['class' => 'btn btn-primary']) !!}
-            </div>
-        </div>
+    {{ Auth::user()->name }}
     @else
 <div class="jumbotron jumbotron-extend">
     <div class="container-fluid jumbotron-container text-white">
