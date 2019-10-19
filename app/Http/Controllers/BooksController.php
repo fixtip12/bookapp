@@ -36,7 +36,7 @@ class BooksController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|max:10',
+            'title' => 'required|max:191',
             'impression' => 'required|max:191',
             'image_path' => 'required|file|mimes:jpg,jpeg,png,gif'
         ]);
@@ -53,6 +53,7 @@ class BooksController extends Controller
         // アップロードした画像のフルパスを取得
         $book->image_path = Storage::disk('s3')->url($path);
         $book->save();
+
 
         return redirect('/');
     }
@@ -86,7 +87,7 @@ class BooksController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required|max:10',
+            'title' => 'required|max:191',
             'impression' => 'required|max:191',
             'image_path' => 'required|file|mimes:jpg,jpeg,png,gif'
         ]);

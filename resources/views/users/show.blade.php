@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+<div class="row ">
     <aside class="col-sm-4">
         <div class="card">
             <div class="card-header">
@@ -13,19 +13,16 @@
         </div>
     </aside>
     <div class="col-sm-8">
-        <ul class="nav nav-tabs nav-justified mb-3">
-            <li class="nav-item"><a href="#" class="nav-link">TimeLine</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
+        <ul class="nav nav-tabs nav-justified mb-3 mt-1">
+            <li class="nav-item"><a href="{{ route('users.show', ['id' => $user->id]) }}" class="h4 nav-link {{ Request::is('users/' . $user->id) ? 'active' : '' }}">読書冊数<span class="badge badge-secondary">{{ $count_books }}</span></a></li>
         </ul>
-        @if (Auth::id() == $user->id)
-        {!! link_to_route('books.create', '新規メッセージの投稿', [], ['class' => 'btn btn-primary']) !!}
-        @endif
         @if (count($books) > 0)
         @include('books.books', ['books' => $books])
         {{ $books->links('pagination::bootstrap-4') }}
         @endif
+        @if (Auth::id() == $user->id)
+        {!! link_to_route('books.create', '読んだ本を登録する', [], ['class' => 'btn btn-success btn-lg']) !!}
+        @endif
     </div>
-
 </div>
 @endsection
