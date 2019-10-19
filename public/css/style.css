@@ -1,6 +1,5 @@
 .main{
   width: 100%;
-  background: url(book.jpg) no-repeat center center;
+  background: url(../img/book.jpg) no-repeat center center;
   background-size: cover;
-  width: 100%;
 }
