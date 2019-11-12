@@ -9,7 +9,7 @@
             {!! Form::model($book, ['route' => 'books.store','enctype' => 'multipart/form-data']) !!}
 
                 <div class="form-group text-white">
-                    {!! Form::label('title', '本のタイトル:') !!}
+                    {!! Form::label('title', '本タイトル:') !!}
                     {!! Form::text('title', null, ['class' => 'form-control']) !!}
                 </div>
         
