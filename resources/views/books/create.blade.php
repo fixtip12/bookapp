@@ -23,7 +23,34 @@
                     {{Form::file('image_path')}}
                 </div>
         
-                {!! Form::submit('登録する', ['class' => 'btn btn-success']) !!}
+                <button type="button" data-toggle="modal" data-target="#modal_delete" data-title="登録しますか？" data-url="book/store">削除</button>
+
+                <div class="modal" tabindex="-1" role="dialog" id="modal_delete">
+    <form role="form" class="form-inline" method="POST" action="">
+      {{ csrf_field() }}
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+            <button type="submit" class="btn btn-danger">削除</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script>
+    $('#modal_delete').on('shown.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var title = button.data('title');
+      var url = button.data('url');
+      var modal = $(this);
+      modal.find('.modal-body p').eq(0).text(title);
+      modal.find('form').attr('action',url);
+    });
+  </script>
         
             {!! Form::close() !!}
         </div>

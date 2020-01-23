@@ -16,7 +16,8 @@
 {!! link_to_route('books.edit', '本のタイトル・感想を編集', ['id' => $book->id], ['class' => 'btn btn-light']) !!}
 
 {!! Form::model($book, ['route' => ['books.destroy', $book->id], 'method' => 'delete']) !!}
-{!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
+<button type="button" class="delete-confirm btn btn-success" value="{{ $book->id}}" data-toggle="modal" data-target="#confirm-delete">削除</button>
+@include('commons.modal')
 {!! Form::close() !!}
 
 

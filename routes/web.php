@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'BooksController@index');
+Route::get('/form', 'FormController@index');
+Route::post('/form/confirm', 'FormController@confirm');
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
