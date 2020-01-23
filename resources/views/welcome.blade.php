@@ -21,6 +21,9 @@
         @if (Auth::id() == $user->id)
         {!! link_to_route('books.create', '読んだ本を登録する', [], ['class' => 'btn btn-success btn-lg']) !!}
         @endif
+        <a href="/form">bootstrap</a>
+        <a href="/form?home=大阪">大阪</a>
+        
     </div>
 </div>
 @else
